@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/assets/css/fonts.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:type" content="website" />
+    {% if coverImage %}
+    <meta
+      property="og:image"
+      content="{{site.url}}{{page.url}}images/{{ coverImage }}"
+    />
+    {% endif %} {% if hasGallery %}
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    {% endif %}
+  </head>
+  <body>
+    <header class="site-header">{% include "partials/menu.njk" %}</header>
+    <main class="site-main">
+      {% block content %} {{ content | safe }} {% endblock %}
+    </main>
+    <footer>{% include "partials/footer.njk" %}</footer>
+    <script src="/assets/js/fslightbox.js"></script>
+    {% if hasGallery %}
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var galleries = document.querySelectorAll(".masonry")
+
+        galleries.forEach(function (gallery) {
+          imagesLoaded(gallery, function () {
+            new Masonry(gallery, {
+              itemSelector: ".gallery-item",
+              percentPosition: true,
+              gutter: 0,
+            })
+          })
+        })
+      })
+    </script>
+    {% endif %}
+  </body>
+</html>

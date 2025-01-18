@@ -1,0 +1,41 @@
+<nav aria-labelledby="my-pagination" class="pagination-nav">
+  <ol class="pagination-list">
+    <li class="pagination-item">
+      {% if page.url != pagination.href.first %}
+        <a href="{{ pagination.href.first }}" class="pagination-link"><i class="fas fa-angle-double-left"></i> First</a>
+      {% else %}
+        <span class="pagination-link disabled"><i class="fas fa-angle-double-left"></i> First</span>
+      {% endif %}
+    </li>
+    <li class="pagination-item">
+      {% if pagination.href.previous %}
+        <a href="{{ pagination.href.previous }}" class="pagination-link"><i class="fas fa-angle-left"></i> Previous</a>
+      {% else %}
+        <span class="pagination-link disabled"><i class="fas fa-angle-left"></i> Previous</span>
+      {% endif %}
+    </li>
+    {%- for pageEntry in pagination.pages %}
+      <li class="pagination-item">
+        <a href="{{ pagination.hrefs[ loop.index0 ] }}"
+           class="pagination-link {% if page.url == pagination.hrefs[ loop.index0 ] %}active{% endif %}"
+           {% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>
+          {{ loop.index }}
+        </a>
+      </li>
+    {%- endfor %}
+    <li class="pagination-item">
+      {% if pagination.href.next %}
+        <a href="{{ pagination.href.next }}" class="pagination-link">Next <i class="fas fa-angle-right"></i></a>
+      {% else %}
+        <span class="pagination-link disabled">Next <i class="fas fa-angle-right"></i></span>
+      {% endif %}
+    </li>
+    <li class="pagination-item">
+      {% if page.url != pagination.href.last %}
+        <a href="{{ pagination.href.last }}" class="pagination-link">Last <i class="fas fa-angle-double-right"></i></a>
+      {% else %}
+        <span class="pagination-link disabled">Last <i class="fas fa-angle-double-right"></i></span>
+      {% endif %}
+    </li>
+  </ol>
+</nav>

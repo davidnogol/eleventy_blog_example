@@ -1,0 +1,39 @@
+{% extends "layouts/page.njk" %} {% block content %}
+<div class="content-container">
+  {% if coverImage %}
+  <img
+    src="images/{{ coverImage }}"
+    alt="Titulní obrázek"
+    class="featured-image"
+  />
+  {% endif %}
+  <article>
+    <h1>{{ title }}</h1>
+    <div class="post-meta">
+      <p class="post-date">
+        <img
+          eleventy:ignore
+          src="/assets/images/calendar.svg"
+          width="15"
+          height="15"
+        /><span>{{ date | asPostDate }}</span>
+      </p>
+      {% if tags %}
+      <p class="footer-tags post-meta-tags">
+        {% for tag in tags %}
+        <a href="/tag/{{ tag | slugify }}"
+          ><img
+            eleventy:ignore
+            src="/assets/images/tag.svg"
+            width="13"
+            height="13"
+          /><span>{{ tag }}</span></a
+        >
+        {% endfor %}
+      </p>
+      {% endif %}
+    </div>
+    {{ content | safe }}
+  </article>
+  {% endblock %}
+</div>

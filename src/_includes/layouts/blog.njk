@@ -1,0 +1,11 @@
+{% extends "layouts/page.njk" %}
+
+{% block content %}
+  {% if tag %}
+    {% set posts = collections[ tag ] | reverse %}
+  {% endif %}
+  {% include "partials/post-list.njk"  %}
+  {% if not tag %}
+    {% include "partials/pagination.njk" %}
+  {% endif %}
+{% endblock %}

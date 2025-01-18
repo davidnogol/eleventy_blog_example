@@ -1,0 +1,45 @@
+<div class="posts-list">
+  {% if tag %}
+    <div class="tag-header">
+      <p>Příspěvky s tagem: <strong>{{ tag }}</strong></p>
+    </div>
+  {% endif %}
+  {% for post in posts %}
+    <div class="post-item">
+      <a href="{{ post.url }}">
+        {% if post.data.coverImage %}
+          <img
+            src="{{ post.url }}/images/{{ post.data.coverImage }}"
+            alt="{{ post.data.title }}"
+            class="post-image"
+            loading="lazy"
+          />
+        {% endif %}
+      </a>
+      <div class="post-content">
+        <h2 class="post-title">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h2>
+        <div class="post-meta">
+      <p class="post-date"><img eleventy:ignore src="/assets/images/calendar.svg" width="15" height="15"><span>{{ post.date | asPostDate }}</span></p>
+      {% if post.data.tags %}
+        <p class="footer-tags post-meta-tags">
+          {% for tag in post.data.tags %}
+            <a href="/tag/{{ tag | slugify }}"><img eleventy:ignore src="/assets/images/tag.svg" width="13" height="13"><span>{{ tag }}</span></a>
+          {% endfor %}
+        </p>
+      {% endif %}
+    </div>
+        <p class="post-description">{{ post.data.description }}</p>
+        <!-- Přidaný zkrácený obsah -->
+        <p class="post-excerpt">
+          {{ post.templateContent | striptags | truncate(300) }}...
+        </p>
+        <a href="{{ post.url }}" class="read-more">Číst dále</a>
+        <!-- Konec přidaného zkráceného obsahu -->
+      </div>
+    </div>
+  {% else %}
+    <p>Žádné příspěvky nenalezeny.</p>
+  {% endfor %}
+</div>

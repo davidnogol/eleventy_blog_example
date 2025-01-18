@@ -1,0 +1,26 @@
+{
+  "name": "eleventy_example_blog",
+  "author": "David Nogol - nogol.cz",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rm -rf _site && npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^5.0.0",
+    "@11ty/eleventy-plugin-rss": "^2.0.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "eleventy-plugin-youtube-embed": "^1.11.0",
+    "markdown-it-attrs": "^4.3.1",
+    "netlify-plugin-11ty": "^1.4.0"
+  },
+  "devDependencies": {
+    "luxon": "^3.5.0"
+  }
+}

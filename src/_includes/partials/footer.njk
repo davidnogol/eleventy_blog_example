@@ -1,0 +1,44 @@
+<div class="site-footer">
+  <div class="footer-container">
+    <div class="footer-block footer-placeholder">
+      <h2>David Nogol</h2>
+      <div class="autor-block">
+        <p>
+          Info about author.
+        </p>
+      </div>
+    </div>
+    <div class="footer-block footer-tags">
+      <h2>Tags</h2>
+      <ul>
+        {% for tag in collections.tags %}
+        <li><a href="/tag/{{ tag | slug }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="footer-block footer-placeholder">
+      <h2>Links</h2>
+
+      <ul>
+        <li>
+          <a href="/feed.xml" aria-label="RSS Feed" class="rss-link">
+            <img
+              eleventy:ignore
+              src="/assets/images/rss.svg"
+              alt="RSS"
+              width="20"
+              height="20"
+            />
+            Atom Feed
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/davidnogol">@davidnogol na X.com</a>
+        </li>
+        <li>
+          <a href="http://fototipy.cz">Fototipy.cz</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
